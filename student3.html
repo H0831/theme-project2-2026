@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Project CONNECT 2026 - 테마별 프로젝트 봉사 포털</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <link href="https://fonts.googleapis.com/css2?family=Pretendard:wght@300;400;600;700;800&display=swap" rel="stylesheet">
+    <style>
+        body { 
+            font-family: 'Pretendard', sans-serif; 
+            scroll-behavior: smooth; 
+            line-height: 1.7; 
+            letter-spacing: -0.03em; 
+            word-break: keep-all; 
+        }
+        .theme-card { transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+        @media (min-width: 1024px) {
+            .theme-card:hover { transform: translateY(-12px); box-shadow: 0 30px 40px -10px rgba(0,0,0,0.15); }
+        }
+        .bg-mesh {
+            background-color: #ffffff;
+            background-image: radial-gradient(at 0% 0%, rgba(99, 102, 241, 0.08) 0, transparent 50%), 
+                              radial-gradient(at 100% 0%, rgba(16, 185, 129, 0.08) 0, transparent 50%),
+                              radial-gradient(at 50% 100%, rgba(244, 63, 94, 0.05) 0, transparent 50%);
+        }
+        .glass { background: rgba(255, 255, 255, 0.9); backdrop-filter: blur(15px); border-bottom: 1px solid rgba(0, 0, 0, 0.05); }
+        .month-card { border-radius: 24px; border: 1px solid #f1f5f9; height: 100%; background: white; padding: 1.5rem; transition: transform 0.3s ease; position: relative; overflow: hidden; }
+        @media (min-width: 768px) { .month-card { padding: 2rem; } }
+        .month-number { font-size: 2.5rem; font-weight: 900; line-height: 1; opacity: 0.1; position: absolute; right: 1rem; top: 1rem; }
+        .mission-box { @apply bg-slate-50 border border-slate-200 rounded-[1.5rem] p-5 md:p-6 mb-6 shadow-inner; }
+        .font-impact { font-weight: 800; letter-spacing: -0.05em; }
+        .custom-scroll::-webkit-scrollbar { width: 5px; }
+        .custom-scroll::-webkit-scrollbar-thumb { background: #cbd5e1; border-radius: 10px; }
+        .date-chip { @apply inline-flex items-center gap-1.5 px-2 py-1 rounded-lg bg-white border border-slate-100 shadow-sm text-[11px] md:text-xs font-bold text-slate-700; }
+    </style>
+</head>
+<body class="bg-mesh text-slate-900 overflow-x-hidden text-left">
+
+    <!-- Header -->
+    <header class="fixed w-full z-50 glass px-4 md:px-6 py-4 md:py-5">
+        <div class="max-w-7xl mx-auto flex justify-between items-center text-left">
+            <div class="flex items-center gap-3 cursor-pointer" onclick="window.scrollTo(0,0)">
+                <div class="w-10 h-10 md:w-12 md:h-12 bg-indigo-600 rounded-xl flex items-center justify-center text-white shadow-xl shadow-indigo-300">
+                    <i class="fas fa-link text-xl md:text-2xl"></i>
+                </div>
+                <div class="text-left font-impact">
+                    <span class="text-xl md:text-2xl block leading-none uppercase">CONNECT 2026</span>
+                    <span class="text-[9px] md:text-[10px] text-indigo-500 font-black uppercase tracking-[0.3em]">Volunteer Portal</span>
+                </div>
+            </div>
+            <nav class="hidden lg:flex gap-10 font-bold text-slate-600 text-base">
+                <a href="#calendar" class="hover:text-indigo-600 transition">연간 로드맵</a>
+                <a href="#themes" class="hover:text-indigo-600 transition">9대 테마 미션</a>
+                <a href="#apply" class="bg-indigo-600 text-white px-8 py-3 rounded-full hover:bg-indigo-700 transition shadow-xl text-sm font-black italic">신청하기</a>
+            </nav>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section class="pt-48 pb-20 md:pt-64 md:pb-40 px-6 text-center">
+        <div class="max-w-7xl mx-auto text-center">
+            <span class="inline-block px-4 py-1.5 md:px-6 md:py-2.5 rounded-full bg-indigo-100 text-indigo-700 text-xs md:text-sm font-black mb-8 border border-indigo-200 uppercase tracking-widest shadow-sm">Your Action, Our Future</span>
+            <h1 class="text-4xl sm:text-6xl md:text-8xl font-impact text-slate-900 mb-8 md:mb-12 leading-[1.2] md:leading-[1.1] tracking-tighter">
+                의미 있는 날을<br><span class="text-indigo-600 italic">가치 있는 행동</span>으로
+            </h1>
+            <p class="text-lg md:text-2xl text-slate-500 mb-10 md:mb-16 max-w-4xl mx-auto font-medium leading-relaxed">
+                3월부터 12월까지 이어지는 9가지 테마의 연간 프로젝트.<br class="hidden md:block">
+                당신의 진심이 담긴 기획으로 더 나은 공동체를 디자인하세요.
+            </p>
+            <div class="flex flex-col sm:flex-row justify-center gap-4 md:gap-6">
+                <a href="#themes" class="px-10 py-5 md:px-14 md:py-7 bg-slate-950 text-white rounded-[2rem] md:rounded-[3rem] font-black text-lg md:text-2xl hover:bg-slate-800 transition shadow-2xl transform hover:-translate-y-1">9대 테마 탐색</a>
+                <a href="#calendar" class="px-10 py-5 md:px-14 md:py-7 bg-white border-2 border-slate-200 text-slate-700 rounded-[2rem] md:rounded-[3rem] font-black text-lg md:text-2xl hover:bg-slate-50 transition shadow-lg transform hover:-translate-y-1">연간 로드맵</a>
+            </div>
+        </div>
+    </section>
+
+    <!-- Master Roadmap -->
+    <section id="calendar" class="py-20 md:py-32 bg-slate-50/40 px-6 text-left">
+        <div class="max-w-7xl mx-auto">
+            <div class="flex flex-col md:flex-row justify-between items-start md:items-end mb-16 gap-6 text-left">
+                <div class="text-left">
+                    <span class="text-indigo-600 font-black text-sm md:text-lg tracking-widest uppercase mb-2 md:4 block font-impact">Annual Roadmap</span>
+                    <h2 class="text-4xl md:text-6xl font-impact text-slate-900 tracking-tighter">프로젝트 여정</h2>
+                </div>
+                <p class="text-base md:text-xl text-slate-500 font-medium md:max-w-md italic text-left">
+                    프로젝트 봉사팀은 이 일정을 기반으로 각 월의 의미를 담은 캠페인을 주도합니다.
+                </p>
+            </div>
+
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-5 gap-4 md:gap-6 text-left">
+                <!-- Months (디자인 동일 유지) -->
+                <div class="month-card relative"><div class="month-number">03</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-indigo-500 w-10 pb-1">3월</h3><div class="space-y-1.5 text-lg font-bold text-slate-800"><div>3/1 삼일절</div><div>3/3 납세자</div><div>3/8 여성의날</div><div>3/18 상공의날</div><div>3/21 암예방</div><div>3/22 물의날</div></div></div>
+                <div class="month-card relative border-indigo-100 bg-indigo-50/20"><div class="month-number text-indigo-200">04</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-indigo-600 w-10 pb-1 text-indigo-900">4월</h3><div class="space-y-1.5 text-lg font-bold text-indigo-900"><div>4/3 4.3추모</div><div>4/5 식목일</div><div>4/11 임시정부</div><div>4/16 세월호</div><div>4/19 4.19혁명</div><div>4/20 장애인날</div></div></div>
+                <div class="month-card relative border-emerald-100 bg-emerald-50/20 text-emerald-900"><div class="month-number text-emerald-200">05</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-emerald-600 w-10 pb-1">5월</h3><div class="space-y-1.5 text-lg font-bold"><div>5/1 노동절</div><div>5/5 어린이날</div><div>5/8 어버이날</div><div>5/12 간호사날</div><div>5/15 스승의날</div><div>5/18 5.18운동</div></div></div>
+                <div class="month-card relative border-blue-100 bg-blue-50/20 text-blue-950"><div class="month-number text-blue-200">06</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-blue-600 w-10 pb-1">6월</h3><div class="space-y-1.5 text-lg font-bold"><div>6/3 지방선거</div><div>6/5 환경의날</div><div>6/6 현충일</div><div>6/10 6.10항쟁</div><div>6/14 헌혈자의날</div><div>6/25 한국전쟁</div></div></div>
+                <div class="month-card relative text-slate-800"><div class="month-number">07</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-slate-900 w-10 pb-1">7월</h3><div class="space-y-3 text-lg font-bold"><div>7/14 탈북민날</div><div>7/17 제헌절</div><div class="mt-4 p-3 bg-slate-50 rounded-xl text-[11px] text-slate-400 italic">하반기 기획 집중 기간</div></div></div>
+                <div class="month-card relative border-rose-100 bg-rose-50/20 text-rose-900"><div class="month-number text-rose-200">08</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-rose-600 w-10 pb-1">8월</h3><div class="space-y-4 text-lg font-bold"><div>8/12 청소년날</div><div>8/14 위안부기림</div><div>8/15 광복절</div></div></div>
+                <div class="month-card relative border-cyan-100 bg-cyan-50/20 text-cyan-900"><div class="month-number text-cyan-200">09</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-cyan-600 w-10 pb-1 text-cyan-900">9월</h3><div class="space-y-3 text-lg font-bold text-cyan-900"><div>9/7 푸른하늘날</div><div>9/10 자살예방날</div><div>9/21 치매극복날</div><div>9/25 추석 연휴</div></div></div>
+                <div class="month-card relative border-orange-100 bg-orange-50/20 text-orange-900"><div class="month-number text-orange-200">10</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-orange-600 w-10 pb-1 text-orange-900">10월</h3><div class="space-y-1.5 text-lg font-bold overflow-y-auto max-h-48 custom-scroll pr-1"><div>10/1 국군/채식</div><div>10/2 노인의 날</div><div>10/3 개천절</div><div>10/9 한글날</div><div>10/10 정신날</div><div>10/25 독도의 날</div><div>10/29 이태원 참사</div></div></div>
+                <div class="month-card relative border-purple-100 bg-purple-50/20 text-purple-900"><div class="month-number text-purple-200">11</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-purple-600 w-10 pb-1 text-purple-900">11월</h3><div class="space-y-1.5 text-lg font-bold"><div>11/3 학생 독립</div><div>11/4 점자의 날</div><div>11/5 소상공인</div><div>11/13 전태일</div><div>11/17 순국선열</div><div>11/19 아동학대</div></div></div>
+                <div class="month-card relative bg-slate-900 text-white"><div class="month-number text-slate-800">12</div><h3 class="text-xl md:text-2xl font-black mb-4 border-b-4 border-white/20 w-10 pb-1 text-white">12월</h3><div class="space-y-4 md:space-y-5 text-lg font-bold"><div>12/3 소비자의날</div><div>12/5 무역의날</div><div>12/10 인권선언일</div></div></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Theme Detailed Missions (9대 프로젝트 테마 - 제목 스타일 통일) -->
+    <section id="themes" class="py-20 md:py-40 px-4 md:px-6 bg-white text-left">
+        <div class="max-w-7xl mx-auto">
+            <div class="text-center mb-16 md:mb-24">
+                <span class="px-5 py-2 rounded-full bg-slate-100 border border-slate-200 text-xs font-black text-indigo-600 shadow-sm uppercase tracking-widest mb-6 inline-block italic text-center">9 Strategic Missions</span>
+                <!-- '프로젝트 여정'과 스타일 통일 (italic 제거) -->
+                <h2 class="text-4xl md:text-7xl font-impact text-slate-900 tracking-tighter text-center uppercase">9대 프로젝트 테마</h2>
+                <p class="text-lg md:text-2xl text-slate-500 max-w-4xl mx-auto mt-6 md:10 font-medium leading-relaxed text-center text-center">우리의 작은 실천이 세상을 바꾸는 위대한 울림이 됩니다.</p>
+            </div>
+            
+            <!-- 3x3 그리드 구성 -->
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 md:gap-8">
+                <!-- 01 ~ 09 테마 데이터 -->
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-red-500 flex flex-col h-full text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-red-50 text-red-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-red-100"><i class="fas fa-flag"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900">국경일 · 역사</h3><p class="text-[10px] font-extrabold text-red-400 uppercase tracking-widest">Remember</p></div>
+                    </div>
+                    <div class="mission-box bg-red-50/50 border-red-100 text-left text-left">
+                        <h4 class="text-[10px] font-black text-red-700 uppercase mb-2 tracking-widest flex items-center gap-1.5"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight">"어제의 기억으로 오늘의 가치를 세우다, 역사를 잇는 발걸음"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left">
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-red-500 mt-1"></i> <span>태극기 게양 유도 챌린지</span></div>
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-red-500 mt-1"></i> <span>역사 의미 찾기 캠페인</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">3/1</span><span class="date-chip">7/17</span><span class="date-chip">8/15</span><span class="date-chip">10/3</span><span class="date-chip">10/9</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-emerald-500 flex flex-col h-full text-left text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-emerald-50 text-emerald-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-emerald-100"><i class="fas fa-leaf"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900">환경 · 생태</h3><p class="text-[10px] font-extrabold text-emerald-400 uppercase tracking-widest">Eco Harmony</p></div>
+                    </div>
+                    <div class="mission-box bg-emerald-50/50 border-emerald-100 text-left text-left">
+                        <h4 class="text-[10px] font-black text-emerald-700 uppercase mb-2 tracking-widest flex items-center gap-1.5"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight">"지구의 맥박을 느끼는 한 걸음, 다음 세대를 위한 초록빛 유산"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left">
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span>지역 산책로 줍킹 캠페인</span></div>
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-emerald-500 mt-1"></i> <span>탄소 중립 생활화 챌린지</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5 text-left text-left"><span class="date-chip text-left">3/22</span><span class="date-chip text-left">4/22</span><span class="date-chip text-left">5/22</span><span class="date-chip text-left">6/5</span><span class="date-chip text-left text-left">9/7</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-blue-500 flex flex-col h-full text-left text-left text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-blue-50 text-blue-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-blue-100"><i class="fas fa-coins text-left"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900 text-left">노동 · 경제</h3><p class="text-[10px] font-extrabold text-blue-400 uppercase tracking-widest text-left">Fair Value</p></div>
+                    </div>
+                    <div class="mission-box bg-blue-50/50 border-blue-100 text-left text-left">
+                        <h4 class="text-[10px] font-black text-blue-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left text-left"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left">"노동의 품격을 세우고 공정의 가치를 나누는 성숙한 경제 시민"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left">
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>노동 권리 보호 가이드 배포</span></div>
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-blue-500 mt-1"></i> <span>윤리적 소비 인식 개선 홍보</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">5/1</span><span class="date-chip">11/13</span><span class="date-chip">12/3</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-rose-500 flex flex-col h-full text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-rose-50 text-rose-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-rose-100"><i class="fas fa-heartbeat"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900">보건 · 건강</h3><p class="text-[10px] font-extrabold text-rose-400 uppercase tracking-widest">Wellness</p></div>
+                    </div>
+                    <div class="mission-box bg-rose-50/50 border-rose-100 text-left">
+                        <h4 class="text-[10px] font-black text-rose-700 uppercase mb-2 tracking-widest flex items-center gap-1.5"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight">"가장 고귀한 약속 '생명존중', 당신의 온기가 누군가에겐 빛이 됩니다"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left">
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-rose-500 mt-1"></i> <span>자살 예방 인식 개선 캠페인</span></div>
+                        <div class="flex items-start gap-2.5"><i class="fas fa-check-circle text-rose-500 mt-1"></i> <span>생명 사랑 헌혈 장려 활동</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">6/14</span><span class="date-chip">9/10</span><span class="date-chip">10/10</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-indigo-500 flex flex-col h-full text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8 text-left">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-indigo-50 text-indigo-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-indigo-100 text-left"><i class="fas fa-balance-scale"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900 text-left">민주시민</h3><p class="text-[10px] font-extrabold text-indigo-400 uppercase tracking-widest text-left">Citizenship</p></div>
+                    </div>
+                    <div class="mission-box bg-indigo-50/50 border-indigo-100 text-left">
+                        <h4 class="text-[10px] font-black text-indigo-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left text-left"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left">"행동하는 양심이 만드는 변화, 더 나은 민주주의를 향한 우리의 전진"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left">
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> <span>민주화 항쟁 기림 자치 활동</span></div>
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-indigo-500 mt-1"></i> <span>민주적 의사결정 모델링 토론</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">4/19</span><span class="date-chip">5/18</span><span class="date-chip">6/10</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-purple-500 flex flex-col h-full text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-purple-50 text-purple-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-purple-100"><i class="fas fa-universal-access"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900">인권 · 소수자</h3><p class="text-[10px] font-extrabold text-purple-400 uppercase tracking-widest">Inclusion</p></div>
+                    </div>
+                    <div class="mission-box bg-purple-50/50 border-purple-100 text-left">
+                        <h4 class="text-[10px] font-black text-purple-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left">"편견의 벽을 허무는 공감의 연대, 모든 인권이 존중받는 평등 공동체"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left">
+                        <div class="flex items-start gap-2.5 text-left"><i class="fas fa-check-circle text-purple-500 mt-1"></i> <span>장애인·노인 인식 개선 위크</span></div>
+                        <div class="flex items-start gap-2.5 text-left"><i class="fas fa-check-circle text-purple-500 mt-1"></i> <span>난민 및 아동 인권 보호 캠페인</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">3/8</span><span class="date-chip">4/20</span><span class="date-chip">12/10</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-slate-400 flex flex-col h-full text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8 text-left">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-slate-100 text-slate-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-slate-200 text-left"><i class="fas fa-ribbon"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900 text-left">추모 · 안전</h3><p class="text-[10px] font-extrabold text-slate-400 uppercase tracking-widest text-left">Eternal Memory</p></div>
+                    </div>
+                    <div class="mission-box bg-slate-50 border-slate-200 text-left">
+                        <h4 class="text-[10px] font-black text-slate-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left"><i class="fas fa-quote-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left text-left text-left">"슬픔을 딛고 피어난 기억의 꽃, 잊지 않겠다는 약속이 만드는 세상"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left text-left">
+                        <div class="flex items-start gap-2.5 text-left"><i class="fas fa-check-circle text-slate-500 mt-1"></i> <span>참사 희생자 기억 리본 나눔</span></div>
+                        <div class="flex items-start gap-2.5 text-left text-left text-left"><i class="fas fa-check-circle text-slate-500 mt-1"></i> <span>교내 안전 사각지대 발굴 활동</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">4/16</span><span class="date-chip">6/25</span><span class="date-chip">10/29</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-amber-500 flex flex-col h-full text-left text-left text-left text-left text-left text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8 text-left">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-amber-50 text-amber-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-amber-100 text-left text-left"><i class="fas fa-gift text-left text-left"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900 text-left">감사 · 나눔</h3><p class="text-[10px] font-extrabold text-amber-400 uppercase tracking-widest text-left">Heart Connect</p></div>
+                    </div>
+                    <div class="mission-box bg-amber-50/50 border-amber-100 text-left text-left">
+                        <h4 class="text-[10px] font-black text-amber-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left text-left text-left text-left text-left text-left text-left"><i class="fas fa-quote-left text-left text-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left text-left text-left text-left text-left text-left">"진심을 전하는 다정한 연결, 감사와 나눔으로 일상을 물들이다"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left text-left text-left text-left text-left">
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-amber-500 mt-1"></i> <span>스승/어버이날 감사 릴레이</span></div>
+                        <div class="flex items-start gap-2.5 text-left text-left text-left text-left text-left text-left"><i class="fas fa-check-circle text-amber-500 mt-1"></i> <span>독도의 날 및 우리 문화 알기</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5"><span class="date-chip">5/15</span><span class="date-chip">10/25</span><span class="date-chip">11/22</span></div>
+                </div>
+
+                <div class="bg-white rounded-[2rem] md:rounded-[2.5rem] border-2 border-slate-50 p-6 md:p-8 shadow-sm theme-card border-l-[8px] md:border-l-[10px] border-l-cyan-500 flex flex-col h-full text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left">
+                    <div class="flex items-center gap-4 mb-6 md:mb-8 text-left text-left text-left text-left">
+                        <div class="w-14 h-14 md:w-16 md:h-16 bg-cyan-50 text-cyan-600 rounded-2xl flex items-center justify-center text-2xl md:text-3xl shadow-sm border border-cyan-100 text-left text-left"><i class="fas fa-music text-left text-left"></i></div>
+                        <div><h3 class="text-xl md:text-2xl font-black text-slate-900 text-left text-left text-left text-left">오케스트라</h3><p class="text-[10px] font-extrabold text-cyan-400 uppercase tracking-widest text-left text-left text-left text-left">Healing Melody</p></div>
+                    </div>
+                    <div class="mission-box bg-cyan-50/50 border-cyan-100 text-left text-left text-left text-left">
+                        <h4 class="text-[10px] font-black text-cyan-700 uppercase mb-2 tracking-widest flex items-center gap-1.5 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i class="fas fa-quote-left text-left text-left"></i> Mission</h4>
+                        <p class="text-base md:text-lg font-black text-slate-800 leading-tight text-left text-left text-left text-left text-left text-left">"선율로 전하는 위로, 지친 마음에 따뜻한 쉼표를 찍는 음악의 마법"</p>
+                    </div>
+                    <div class="space-y-3 text-sm md:text-base font-bold text-slate-700 flex-grow text-left text-left text-left text-left text-left text-left text-left text-left">
+                        <div class="flex items-start gap-2.5 text-left text-left"><i class="fas fa-check-circle text-cyan-500 mt-1"></i> <span>점심시간/등교길 힐링 '버스킹' 콘서트</span></div>
+                        <div class="flex items-start gap-2.5 text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left text-left"><i class="fas fa-check-circle text-cyan-500 mt-1"></i> <span>스트레스 해소를 위한 '마음 정원' 연주회</span></div>
+                    </div>
+                    <div class="mt-6 flex flex-wrap gap-1.5 text-left text-left text-left text-left text-left"><span class="date-chip">연중 상시</span><span class="date-chip text-left text-left text-left">문화주간</span><span class="date-chip text-left text-left text-left">정기연주</span></div>
+                </div>
+            </div>
+
+            <div class="mt-20 md:mt-32 text-center text-center">
+                <a href="#apply" class="inline-block px-10 py-5 md:px-16 md:py-8 bg-indigo-600 text-white rounded-[2rem] md:rounded-[3rem] font-black text-xl md:text-3xl hover:bg-indigo-700 transition shadow-2xl shadow-indigo-200 transform hover:scale-105 italic tracking-tighter">Join the Symphony !</a>
+            </div>
+        </div>
+    </section>
+
+
+    <!-- Application Form (제안하신 대로 두 부분으로 분리) -->
+    <section id="apply" class="py-24 md:py-48 bg-indigo-950 text-white relative overflow-hidden text-center text-left text-left">
+        <div class="absolute top-0 left-0 w-full h-1 bg-gradient-to-r from-indigo-500 via-emerald-500 to-cyan-500"></div>
+        <div class="max-w-5xl mx-auto px-6 relative z-10 text-center">
+            <h2 class="text-5xl md:text-7xl font-impact mb-10 italic uppercase tracking-tighter text-center">Project Join</h2>
+            <form id="applyForm" class="space-y-10 glass p-8 md:p-20 rounded-[3rem] border border-white/10 bg-white/5 shadow-2xl text-left">
+                <div class="grid grid-cols-1 md:grid-cols-2 gap-8 text-left">
+                    <div class="space-y-4 text-left">
+                        <label class="text-xs font-black uppercase tracking-widest text-indigo-300">학번 및 성명</label>
+                        <input type="text" id="stuName" placeholder="예: 10901 홍길동" required class="w-full bg-white/5 border-2 border-white/10 rounded-2xl px-6 py-4 text-xl text-white focus:ring-4 focus:ring-indigo-500 outline-none transition shadow-inner">
+                    </div>
+                    <div class="space-y-4 text-left">
+                        <label class="text-xs font-black uppercase tracking-widest text-indigo-300 text-left">프로젝트 테마</label>
+                        <select id="themeSelect" required class="w-full bg-slate-900 border-2 border-white/10 rounded-2xl px-6 py-4 text-xl text-white outline-none">
+                            <option value="">테마 선택</option><option>국경일</option><option>환경</option><option>노동경제</option><option>보건건강</option><option>민주시민</option><option>인권소수자</option><option>추모안전</option><option>감사나눔</option><option>오케스트라</option>
+                        </select>
+                    </div>
+                </div>
+
+                <!-- 분리된 입력창 1: 지원 동기 및 활동 포부 -->
+                <div class="space-y-4 text-left">
+                    <label class="text-xs font-black uppercase tracking-widest text-indigo-300 text-left">지원 동기와 활동 포부</label>
+                    <textarea id="motivation" rows="4" required class="w-full bg-white/5 border-2 border-white/10 rounded-[2rem] px-8 py-6 text-xl text-white leading-relaxed outline-none shadow-inner" placeholder="지원하게 된 동기와 활동 포부를 구체적으로 적어주세요."></textarea>
+                </div>
+
+                <!-- 분리된 입력창 2: 날짜별 세부 계획 제안 -->
+                <div class="space-y-4 text-left">
+                    <label class="text-xs font-black uppercase tracking-widest text-indigo-300 text-left">날짜별 세부 계획 제안</label>
+                    <textarea id="plan" rows="6" required class="w-full bg-white/5 border-2 border-white/10 rounded-[2rem] px-8 py-6 text-xl text-white leading-relaxed outline-none shadow-inner" placeholder="기획하신 프로젝트의 월별/일자별 세부 활동 계획을 제안해주세요."></textarea>
+                </div>
+
+                <button type="submit" id="submitBtn" class="w-full bg-indigo-600 hover:bg-indigo-700 py-8 rounded-[2rem] font-black text-3xl shadow-2xl transition transform active:scale-95 italic text-center">기획안 제출 완료</button>
+            </form>
+        </div>
+    </section>
+
+    <!-- Success Modal -->
+    <div id="modal" class="fixed inset-0 z-[100] hidden items-center justify-center bg-slate-950/90 backdrop-blur-3xl p-6 text-center text-center">
+        <div class="bg-white rounded-[4rem] p-12 md:p-24 max-w-xl w-full text-center shadow-2xl border-4 border-slate-50 text-center text-center text-center">
+            <div class="w-24 h-24 md:w-32 md:h-32 bg-green-50 text-green-500 rounded-full flex items-center justify-center text-5xl mx-auto mb-10 text-center text-center"><i class="fas fa-check-circle"></i></div>
+            <h3 class="text-5xl font-impact text-slate-950 mb-6 italic uppercase text-center text-center text-center">Submitted!</h3>
+            <p class="text-2xl text-slate-500 mb-12 font-bold italic text-center text-center">당신의 진심이 담긴 기획안이<br>성공적으로 전달되었습니다.</p>
+            <button onclick="location.reload()" class="w-full bg-slate-950 text-white py-6 rounded-[2rem] font-black text-2xl italic text-center text-center text-center">홈으로 돌아가기</button>
+        </div>
+    </div>
+
+    <!-- Firebase SDK Logic -->
+    <script type="module">
+        import { initializeApp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-app.js";
+        import { getAuth, signInWithCustomToken, signInAnonymously } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-auth.js";
+        import { getFirestore, collection, addDoc, serverTimestamp } from "https://www.gstatic.com/firebasejs/11.6.1/firebase-firestore.js";
+
+        // Happylife-0301 Firebase 설정
+        const firebaseConfig = {
+  apiKey: "AIzaSyBCC_ZKDOKVWagnRdxyXMibEK4-tQVx5EI",
+  authDomain: "happylife-0301.firebaseapp.com",
+  projectId: "happylife-0301",
+  storageBucket: "happylife-0301.firebasestorage.app",
+  messagingSenderId: "50842617524",
+  appId: "1:50842617524:web:868086900262ec9243b9e1",
+  measurementId: "G-CVWZKNZ8E5"
+};
+        const appId = typeof __app_id !== 'undefined' ? __app_id : 'connect-2026';
+
+        const app = initializeApp(firebaseConfig);
+        const auth = getAuth(app);
+        const db = getFirestore(app);
+
+        document.getElementById('applyForm').onsubmit = async (e) => {
+            e.preventDefault();
+            const btn = document.getElementById('submitBtn');
+            if (btn) {
+                btn.disabled = true;
+                btn.innerText = "제출 중...";
+            }
+
+            try {
+                if (typeof __initial_auth_token !== 'undefined' && __initial_auth_token) {
+                    await signInWithCustomToken(auth, __initial_auth_token);
+                } else {
+                    await signInAnonymously(auth);
+                }
+                if (!auth.currentUser) throw new Error("인증 실패");
+
+                // 입력값 가져오기
+                const stuName = document.getElementById('stuName').value;
+                const theme = document.getElementById('themeSelect').value;
+                const motivation = document.getElementById('motivation').value;
+                const plan = document.getElementById('plan').value;
+
+                // 관리자 페이지 호환을 위해 두 내용을 하나로 합쳐 content 필드에 저장
+                const combinedContent = `[지원동기 및 포부]\n${motivation}\n\n[세부 계획]\n${plan}`;
+
+                await addDoc(collection(db, 'artifacts', appId, 'public', 'data', 'proposals'), {
+                    stuName, 
+                    theme, 
+                    content: combinedContent, 
+                    timestamp: serverTimestamp()
+                });
+
+                document.getElementById('modal').classList.remove('hidden');
+                document.getElementById('modal').classList.add('flex');
+            } catch (err) {
+                alert("제출 오류: " + err.message);
+                if (btn) {
+                    btn.disabled = false;
+                    btn.innerText = "기획안 제출 완료";
+                }
+            }
+        };
+
+        window.closeModal = function() {
+            document.getElementById('modal').classList.add('hidden');
+            document.getElementById('modal').classList.remove('flex');
+            window.scrollTo({top: 0, behavior: 'smooth'});
+            document.getElementById('applyForm').reset();
+        };
+    </script>
+</body>
+</html>
